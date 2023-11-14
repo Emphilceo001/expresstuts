@@ -5,13 +5,14 @@
     <%- include('../Partials/nav.ejs') %>
 
     <main class="container">
-      <form action="">
+      <form action="/api/v1/create" method="post">
         <label for="name">Name:</label>
-        <input type="text" id="name" />
-        <label for="title">Titlt</label>
-        <input type="text" id="title" />
-        <label for="task">Task</label>
-        <input type="text" id="task" />
+        <input type="text" id="name" name="name" /><br /><br />
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" /> <br /><br />
+        <label for="task">Task</label><br />
+        <textarea id="" cols="30" rows="10" name="task"></textarea> <br /><br />
+
         <button>Submit</button>
       </form>
     </main>
