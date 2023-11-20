@@ -6,6 +6,8 @@ const morgan = require("morgan");
 const connect = require("./db/mongoDB");
 require("dotenv/config");
 const Tasks = require("./model/taskModel");
+const taskRouter = require("./router/taskRouter");
+require("dotenv/config");
 
 //custom middlewares
 app.set("view engine", "ejs");
@@ -85,32 +87,8 @@ app.use(express.static("public"));
 // ];
 
 //api
+app.use("/api/v1", taskRouter);
 
-app.post("/api/v1/create", async (req, res) => {
-  console.log(req.body);
-
-  const newTask = new Tasks(req.body);
-
-  try {
-    await newTask.save();
-    res.status().redirect("/");
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-app.get("/api/v1/route/:id", async (req, res) => {
-  const id = req.params.id;
-  console.log(id);
-  try {
-    const result = await Tasks.findById(id);
-    res
-      .status(200)
-      .render("singlepage", { title: "single || page", task: result });
-  } catch (error) {
-    console.log(error);
-  }
-});
 //page route
 
 app.get("/", async (req, res) => {

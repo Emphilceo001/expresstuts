@@ -10,14 +10,19 @@
   <body>
     <%- include('../Partials/nav.ejs') %>
 
-    <main>
+    <main class="container">
       <div>
         <h1><%- task.name %></h1>
         <h2><%- task.title %></h2>
         <p><%- task.task %></p>
         <div>
-          <button>delete task</button>
-          <button>edit task</button>
+          <button>
+            <a href="/api/v1/delete/<%= task._id  %>">delete task</a>
+          </button>
+          <button>
+            <a href="/api/v1/editpage/<%= task._id  %>">edit task</a>
+          </button>
+          <!-- < href="/api/v1/editpage/<%= task._id %>" >edit task </a>  </button> -->
         </div>
       </div>
     </main>
